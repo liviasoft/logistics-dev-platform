@@ -1,6 +1,7 @@
 {
   "name": "nuxt-app",
   "private": true,
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "build": "nuxt build",
@@ -9,6 +10,12 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "echo \"No tests implemented yet\" && exit 0",
+    "release": "standard-version",
+    "changelog:generate": "standard-version --skip.bump --skip.commit --skip.tag",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major",
+    "release:dry": "standard-version --dry-run",
     "prepare": "husky"
   },
   "dependencies": {
@@ -24,5 +31,13 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.4.2",
     "standard-version": "^9.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liviasoft/logistics-dev-platform"
+  },
+  "bugs": {
+    "url": "https://github.com/liviasoft/logistics-dev-platform/issues",
+    "email": "techybanky@gmail.com"
   }
 }
