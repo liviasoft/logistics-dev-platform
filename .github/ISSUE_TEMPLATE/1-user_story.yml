@@ -1,9 +1,9 @@
 name: "\U0001F64B New User Story"
 description: Suggest a new User Story for this project
 assignees:
-  - FrankLucky1
+  - Bankole2000
 title: "[User Story]: <Short Description>"
-labels: ["user story", "feature request", "enhancement", "admin"]
+labels: ["user story", "feature request", "enhancement", "dev platform"]
 type: Enhancement
 projects: 
   - 'liviasoft/2'

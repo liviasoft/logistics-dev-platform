@@ -1,12 +1,12 @@
 name: "\U0001F6E0 Task Request"
 description: Request a new task for this project
 title: "[Task]: "
-labels: ["task", 'admin']
+labels: ["task", 'dev platform']
 type: Enhancement
 projects: 
   - 'liviasoft/2'
 assignees:
-  - FrankLucky1
+  - Bankole2000
 body:
   - type: markdown
     attributes:

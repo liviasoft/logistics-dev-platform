@@ -1,12 +1,12 @@
 name: "\U0001F41E Bug report"
 description: Report an issue / bug with this project
 title: "[Bug]: "
-labels: ["bug", 'admin']
+labels: ["bug", 'dev platform']
 type: Bug
 projects: 
   - 'liviasoft/2'
 assignees:
-  - FrankLucky1
+  - Bankole2000
 body:
   - type: markdown
     attributes:
