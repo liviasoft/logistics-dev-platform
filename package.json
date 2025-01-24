@@ -9,6 +9,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "echo \"No tests implemented yet\" && exit 0",
     "release": "standard-version",
     "changelog:generate": "standard-version --skip.bump --skip.commit --skip.tag",
@@ -30,7 +32,11 @@
     "@commitlint/config-conventional": "^19.6.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.2",
-    "standard-version": "^9.5.0"
+    "standard-version": "^9.5.0",
+    "typescript": "^5.7.3"
+  },
+  "lint-staged": {
+    "*.ts": "eslint --fix"
   },
   "repository": {
     "type": "git",
