@@ -4,7 +4,7 @@ assignees:
   - Bankole2000
 title: "[User Story]: <Short Description>"
 labels: ["user story", "feature request", "enhancement", "dev platform"]
-type: Enhancement
+type: 'Feature'
 projects: 
   - 'liviasoft/2'
 body:
