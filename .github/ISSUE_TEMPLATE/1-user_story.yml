@@ -3,7 +3,7 @@ description: Suggest a new User Story for this project
 assignees:
   - Bankole2000
 title: "[User Story]: <Short Description>"
-labels: ["user story", "feature request", "enhancement", "dev platform"]
+labels: ["user story", "dev platform"]
 type: 'Feature'
 projects: 
   - 'liviasoft/2'
