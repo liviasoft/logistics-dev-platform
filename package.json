@@ -21,11 +21,16 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@neoncoder/vuetify-sonner": "^0.3.21",
     "@nuxt/eslint": "^0.7.5",
+    "@pinia/nuxt": "^0.9.0",
+    "@vueuse/nuxt": "^12.5.0",
     "eslint": "^9.19.0",
     "nuxt": "^3.15.2",
+    "pinia": "^2.3.1",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "vuetify-nuxt-module": "^0.18.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
