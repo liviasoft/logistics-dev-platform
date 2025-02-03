@@ -5,9 +5,11 @@
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <VSonner position="bottom-left" :visible-toasts="5" :expand="false" />
-    <VBtn @click="toast('My first toast')">Here is a button</VBtn>
-    <h1>Hello World</h1>
+    <VSonner position="bottom-left" :visible-toasts="3" :expand="false" />
+    <VBtn
+      @click="toast('Event has been created', {
+        description: 'Monday, January 3rd at 6:00pm',
+      })">Here is a button</VBtn>
     <NuxtWelcome />
   </div>
 </template>
