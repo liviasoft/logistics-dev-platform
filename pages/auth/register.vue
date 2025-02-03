@@ -33,7 +33,7 @@
       step: 4,
     }
   ])
-  const activeStep = ref(1)
+  const activeStep = ref(2)
 </script>
 
 <template>
@@ -94,31 +94,68 @@
                 <div>
                   <VImg src="/images/Logomark.svg" height="40px" />
                 </div>
-                <div class="text-center mb-4">
-                  <p class="text-h5 font-weight-bold mt-4">Create a free account</p>
-                  <p class="text-subtitle-1">Provide your email and choose a password</p>
-                </div>
-                <p class="font-weight-bold">Email <span class="text-red">*</span></p>
-                <v-text-field density="compact" placeholder="Enter your email" variant="outlined"/>
-                <p class="font-weight-bold">Password <span class="text-red">*</span></p>
-                <v-text-field density="compact" placeholder="Choose a password" variant="outlined"/>
-                <div class="d-flex align-center pb-0">
-                  <div v-for="(step, i) in onboardingSteps" :key="step.key" :class="{'mr-3': i < onboardingSteps.length - 1 }" class="rounded-lg bg-grey-lighten-2" style="height: 7px; flex: 1" />
-                </div>
-                <div class="d-flex align-center my-4">
-                  <v-divider/>
-                  <p class="px-8">OR</p>
-                  <v-divider/>
-                </div>
-                <div>
-                  <v-btn variant="flat" prepend-icon="mdi-google" border class="text-capitalize" style="text-transform: none;" :size="xlAndUp ? 'large': 'default'" rounded="lg" block>Sign up with Google</v-btn>
-                  <v-btn variant="flat" class="bg-black mt-3" style="text-transform: none;" prepend-icon="mdi-github" :size="xlAndUp ? 'large': 'default'" rounded="lg" block>Sign up with Github</v-btn>
-                  <v-btn variant="flat" class="bg-green-darken-4 mt-6" style="text-transform: none;" :size="xlAndUp ? 'large': 'default'" rounded="lg" block>Continue</v-btn>
-                </div>
+                <VWindow v-model="activeStep">
+                  <VWindowItem :value="1">
+                    <div>
+                      <div class="text-center mb-4">
+                        <p class="text-h5 font-weight-bold mt-4">Create a free account</p>
+                        <p class="text-subtitle-1">Provide your email and choose a password</p>
+                      </div>
+                      <p class="font-weight-bold">Email <span class="text-red">*</span></p>
+                      <v-text-field density="compact" placeholder="Enter your email" variant="outlined"/>
+                      <p class="font-weight-bold">Password <span class="text-red">*</span></p>
+                      <v-text-field density="compact" placeholder="Choose a password" variant="outlined"/>
+                      <div class="d-flex align-center pb-0">
+                        <div v-for="(step, i) in onboardingSteps" :key="step.key" :class="{'mr-3': i < onboardingSteps.length - 1 }" class="rounded-lg bg-grey-lighten-2" style="height: 7px; flex: 1" />
+                      </div>
+                      <div class="d-flex align-center my-4">
+                        <v-divider/>
+                        <p class="px-8">OR</p>
+                        <v-divider/>
+                      </div>
+                      <div>
+                        <v-btn variant="flat" prepend-icon="mdi-google" border class="text-capitalize" style="text-transform: none;" :size="xlAndUp ? 'large': 'default'" rounded="lg" block>Sign up with Google</v-btn>
+                        <v-btn variant="flat" class="bg-black mt-3" style="text-transform: none;" prepend-icon="mdi-github" :size="xlAndUp ? 'large': 'default'" rounded="lg" block>Sign up with Github</v-btn>
+                        <v-btn variant="flat" class="bg-green-darken-4 mt-6" style="text-transform: none;" :size="xlAndUp ? 'large': 'default'" rounded="lg" block>Continue</v-btn>
+                      </div>
+                    </div>
+                  </VWindowItem>
+                  <VWindowItem :value="2">
+                    <div>
+                      <div class="text-center mb-4">
+                        <p class="text-h5 font-weight-bold mt-4">Verify your email</p>
+                        <p class="text-subtitle-1">We sent a code to <strong>your@email.com</strong></p>
+                      </div>
+                      <div style="width: 100%;" class="text-center">
+                        <VOtpInput :length="4" height="100px" min-width="400px"/>
+                        <p>Didn't get a code? <strong class="text-decoration-underline" style="cursor: pointer;">Click to resend</strong></p>
+                      </div>
+                      <div>
+                        <v-btn variant="flat" class="bg-green-darken-4 mt-6" style="text-transform: none;" :size="xlAndUp ? 'large': 'default'" rounded="lg" block>Continue</v-btn>
+                      </div>
+                    </div>
+                  </VWindowItem>
+                  <VWindowItem :value="3">
+                    <div>
+                      <div class="text-center mb-4">
+                        <p class="text-h5 font-weight-bold mt-4">Invite your team</p>
+                        <p class="text-subtitle-1">Start collaborating with your team</p>
+                      </div>
+                    </div>
+                  </VWindowItem>
+                  <VWindowItem :value="4">
+                    <div>
+                      <div class="text-center mb-4">
+                        <p class="text-h5 font-weight-bold mt-4">Welcome to Prometheus! 🎉</p>
+                        <p class="text-subtitle-1">Get up and running in 3 Minutes.</p>
+                      </div>
+                    </div>
+                  </VWindowItem>
+                </VWindow>
               </div>
               <VSpacer />
               <div class="d-flex align-center py-4">
-                <div v-for="(step, i) in onboardingSteps" :key="step.key" class="rounded-lg" :class="{'mr-3': i < onboardingSteps.length - 1, 'bg-green-darken-4': step.step === activeStep,  'bg-grey-lighten-2': step.step !== activeStep }" style="height: 7px; flex: 1"/>
+                <div v-for="(step, i) in onboardingSteps" :key="step.key" class="rounded-lg" :class="{'mr-3': i < onboardingSteps.length - 1, 'bg-green-darken-4': step.step === activeStep,  'bg-grey-lighten-2': step.step !== activeStep }" style="height: 7px; flex: 1" @click="activeStep = i + 1"/>
               </div>
             </div>
           </VCol>
@@ -127,3 +164,8 @@
     </template>
   </NuxtLayout>
 </template>
+<style>
+  .v-otp-input__field {
+    font-size: 3em;
+  }
+</style>
