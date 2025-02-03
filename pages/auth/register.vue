@@ -1,5 +1,7 @@
 <script lang="ts" setup>
   import { toast } from '@neoncoder/vuetify-sonner'
+  import { useDisplay } from 'vuetify'
+  const { xlAndUp } = useDisplay()
 
   const onboardingSteps = ref([
   {
@@ -39,8 +41,11 @@
     <template #process-left>
       <div class="d-flex flex-column" style="min-height: calc(100vh - 64px); flex: 1;">
         <div>
-          <div class="mt-16 pt-16">
-          <VTimeline density="compact" truncate-line="both">
+          <div class="mt-0">
+            <div>
+              <VImg :src="'/images/LogoFull.svg'" :height="40" :width="200" class="mb-16"/>
+            </div>
+          <VTimeline density="comfortable" truncate-line="both">
             <VTimelineItem
               v-for="step in onboardingSteps"
               :key="step.key"
@@ -51,35 +56,18 @@
              >
               <template #icon>
                
-                <VCard :disabled="activeStep != step.step" min-width="36px" min-height="36px" class="rounded-lg d-flex align-center justify-center" border elevation="0" @click="() => {}">
+                <VCard :disabled="activeStep != step.step" :min-width="xlAndUp ? '50px': '40px'" :min-height="xlAndUp ? '50px': '40px'" class="rounded-lg d-flex align-center justify-center" border elevation="0" @click="() => {}">
                   <VIcon :class="activeStep != step.step ? 'text-disabled':''">{{ step.icon }}</VIcon>
                 </VCard>
                 
               </template>
               <div class="d-flex justify-space-between flex-grow-1">
                 <div>
-                  <p class="font-weight-bold text-subtitle-2" :class="activeStep != step.step ? 'text-disabled':''">{{ step.title }}</p>
-                  <p class="font-weight-light text-subtitle-2" :class="activeStep != step.step ? 'text-disabled':''">{{ step.subtitle }}</p>
+                  <p class="font-weight-bold text-high-emphasis" :class="{ 'text-disabled' : activeStep != step.step, 'text-h6' : xlAndUp, 'text-subtitle-1': !xlAndUp }">{{ step.title }}</p>
+                  <p class="font-weight-light text-medium-emphasis text-subtitle-1 mt-n1" :class="{ 'text-disabled' : activeStep != step.step }">{{ step.subtitle }}</p>
                 </div>
               </div>
             </VTimelineItem>
-            <!-- <VTimelineItem
-              class="mb-4"
-              dot-color="pink"
-              size="small"
-             >
-              <template #icon>
-                <VCard :disabled="true" min-width="40px" min-height="40px" class="rounded-lg d-flex align-center justify-center" border elevation="0" @click="() => {}">
-                  <VIcon color="grey">mdi-email-outline</VIcon>
-                </VCard>
-              </template>
-              <div class="d-flex justify-space-between flex-grow-1">
-                <div>
-                  <p class="font-weight-bold text-disabled">Verify your email</p>
-                  <p class="font-weight-light text-disabled">Enter your verification code</p>
-                </div>
-              </div>
-            </VTimelineItem> -->
           </VTimeline>
           </div>
         </div>
@@ -98,8 +86,43 @@
       </div>
     </template>
     <template #process-right>
-      <div class="d-flex flex-column" style="min-height: calc(100vh - 64px); flex: 1;">
-        RIGHT
+      <div style="min-height: calc(100vh - 64px); flex: 1;">
+        <VRow justify="center" class="pa-0 ma-0" style="height: 100%">
+          <VCol lg="5" md="10" class="pa-0 ma-0">
+            <div class="d-flex flex-column" style="height: 100%">
+              <div>
+                <div>
+                  <VImg src="/images/Logomark.svg" height="40px" />
+                </div>
+                <div class="text-center mb-4">
+                  <p class="text-h5 font-weight-bold mt-4">Create a free account</p>
+                  <p class="text-subtitle-1">Provide your email and choose a password</p>
+                </div>
+                <p class="font-weight-bold">Email <span class="text-red">*</span></p>
+                <v-text-field density="compact" placeholder="Enter your email" variant="outlined"/>
+                <p class="font-weight-bold">Password <span class="text-red">*</span></p>
+                <v-text-field density="compact" placeholder="Choose a password" variant="outlined"/>
+                <div class="d-flex align-center pb-0">
+                  <div v-for="(step, i) in onboardingSteps" :key="step.key" :class="{'mr-3': i < onboardingSteps.length - 1 }" class="rounded-lg bg-grey-lighten-2" style="height: 7px; flex: 1" />
+                </div>
+                <div class="d-flex align-center my-4">
+                  <v-divider/>
+                  <p class="px-8">OR</p>
+                  <v-divider/>
+                </div>
+                <div>
+                  <v-btn variant="flat" prepend-icon="mdi-google" border class="text-capitalize" style="text-transform: none;" :size="xlAndUp ? 'large': 'default'" rounded="lg" block>Sign up with Google</v-btn>
+                  <v-btn variant="flat" class="bg-black mt-3" style="text-transform: none;" prepend-icon="mdi-github" :size="xlAndUp ? 'large': 'default'" rounded="lg" block>Sign up with Github</v-btn>
+                  <v-btn variant="flat" class="bg-green-darken-4 mt-6" style="text-transform: none;" :size="xlAndUp ? 'large': 'default'" rounded="lg" block>Continue</v-btn>
+                </div>
+              </div>
+              <VSpacer />
+              <div class="d-flex align-center py-4">
+                <div v-for="(step, i) in onboardingSteps" :key="step.key" class="rounded-lg" :class="{'mr-3': i < onboardingSteps.length - 1, 'bg-green-darken-4': step.step === activeStep,  'bg-grey-lighten-2': step.step !== activeStep }" style="height: 7px; flex: 1"/>
+              </div>
+            </div>
+          </VCol>
+        </VRow>
       </div>
     </template>
   </NuxtLayout>
