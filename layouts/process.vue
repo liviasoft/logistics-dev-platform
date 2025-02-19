@@ -8,7 +8,7 @@
     <VMain>
       <div class="d-flex" style="width: 100vw; height: 100vh;">
         <div :style="{ width: mdAndDown ? '100vw' : lgAndUp ? '30vw' : '45vw' }" style="height: 100vh; background-color: #FAFAFA; background-image: url('/images/Logomark.svg'); background-position: bottom 40px right -100px; background-size: 300px;">
-          <VContainer min-height="100%" class="px-8 py-8 d-flex" style="backdrop-filter: blur(2px); background-color: #FAFAFAEE;">
+          <VContainer min-height="100%" :class="{ 'px-8 py-8' : mdAndUp, 'pl-4 pr-6 py-6' : !mdAndUp }" class="d-flex" style="backdrop-filter: blur(2px); background-color: #FAFAFAEE;">
             <slot name="process-left" />
           </VContainer>
         </div>
