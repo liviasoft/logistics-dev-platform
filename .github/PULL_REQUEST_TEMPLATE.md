@@ -1,9 +1,9 @@
-## What does this PR do?
+# What does this PR do?
 
 * Changes Login page to comform to figma UI design
 * Let's user reset their forgotten password
 
-### Description of Change
+## Description of Change
 
 * [ ] Bug fix (non-breaking change that fixes an issue)
 * [ ] New feature (non-breaking change that adds functionality)
